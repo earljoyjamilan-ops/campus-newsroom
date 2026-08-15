@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Pilot sync bridge used by the current single-file HTML app.
+    // Use this only during controlled testing.
+    match /newsroomState/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
